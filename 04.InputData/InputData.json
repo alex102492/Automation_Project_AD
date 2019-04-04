@@ -1,9 +1,13 @@
 [{
 	"URL":"https://www.freelancer.com",
 	"signup":"/signup",
+	"login":"/login",
 	"email":"email8810@yahoo.com",
 	"password":"email1",
-	"username":"email8810"
+	"username":"email8810",
+	"incorrectEmail":"incorect@yahoo.com",
+	"invalidEmail":"incorect@yahoo",
+	"incorrectPassword":"incorect"
 	
 }
 ]

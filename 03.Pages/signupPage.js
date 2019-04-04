@@ -76,6 +76,13 @@ module.exports = (function(signupPage) {
 		
 		//Se verifica ca apare textul Signup Success!
 		signupPage.verifySignupSuccessSign();
+		
+		//Se asteapta 3 secunde pentru a se incarca datele
+		browser.sleep(3000);
+		
+		//Se selecteaza categoria principala de skilluri
+		signupPage.SearchSkillsCategoryClick();
+		
 	};
 	
 

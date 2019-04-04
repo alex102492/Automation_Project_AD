@@ -51,11 +51,8 @@ exports.config={
        		
        		//specs: ['../'] //la teste individuale nu se pune virgula, .. - pointeaza in ramura din spate
        		
-       		//specs: ['../dumitrescu_alexandra_2/01.Scenarios/spec_LoginScript.js']
-       		//specs: ['../dumitrescu_alexandra_2/01.Scenarios/spec_LogoutScript.js']
-       		//specs: ['../dumitrescu_alexandra_2/01.Scenarios/spec_AddNewTask.js']
-       		//specs: ['../dumitrescu_alexandra_2/01.Scenarios/spec_ScrollExample.js']
-       		specs: ['../Automation_Project_AD/01.Scenarios/spec_signupPage.js']
+       		//specs: ['../Automation_Project_AD/01.Scenarios/spec_signupPage.js'],
+       		specs: ['../Automation_Project_AD/01.Scenarios/spec_loginPage.js']
        		/*suites: {
        			suite: [
        				'../',
