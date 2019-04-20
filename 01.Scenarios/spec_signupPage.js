@@ -18,7 +18,7 @@ describe('spec_signupPage', function() {
 				
 		it('Signup Page', function(){
 		
-			signupPage.signupUser(data.URL+data.signup, data.email, data.password, data.username);
+			signupPage.signupUser(data.URL+data.signup, data.email, data.password, data.emailError, data.passwordError, data.usernameError, data.username);
 	        console.log("Utilizatorul a fost inregistrat cu succes!")
 		});
 	});

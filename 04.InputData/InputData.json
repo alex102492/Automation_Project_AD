@@ -2,12 +2,24 @@
 	"URL":"https://www.freelancer.com",
 	"signup":"/signup",
 	"login":"/login",
-	"email":"email8810@yahoo.com",
-	"password":"email1",
-	"username":"email8810",
+	"email":"alexandra.dumitrescu2410@gmail.com",
+	"password":"test123",
+	"username":"alex102492",
+	"emailError":"Please enter an email address.",
+	"passwordError":"Please enter a password.",
+	"usernameError":"Please enter a username.",
 	"incorrectEmail":"incorect@yahoo.com",
 	"invalidEmail":"incorect@yahoo",
-	"incorrectPassword":"incorect"
+	"incorrectPassword":"incorect",
+	"loginInvalidUsername":"Please enter a valid username or email address.",
+	"wrongCredentialsError":"Incorrect username or password provided.",
+	"loginEmptyUsername":"Please enter your username or email address.",
+	"loginEmptyPassword":"Please enter your password.",
+	"postLoginSuccessText":"Alexandra D.",
+	"postLogoutText":"Hire expert freelancers for any job, online",
+	"firstname":"Alexandra",
+	"lastname":"Dumitrescu",
+	"language":"english"
 	
 }
 ]

@@ -10,9 +10,14 @@ exports.config={
 	   
 
        capabilities: {
-    	       	   'browserName':'chrome'
-    	  
+    	       	  
+    	   'browserName':'chrome',
+    
+    	   
+
        },
+       
+       
        
        framework:'jasmine',
        
@@ -52,7 +57,7 @@ exports.config={
        		//specs: ['../'] //la teste individuale nu se pune virgula, .. - pointeaza in ramura din spate
        		
        		//specs: ['../Automation_Project_AD/01.Scenarios/spec_signupPage.js'],
-       		specs: ['../Automation_Project_AD/01.Scenarios/spec_loginPage.js']
+       		specs: ['../Automation_Project_AD/01.Scenarios/spec_logoutPage.js']
        		/*suites: {
        			suite: [
        				'../',
