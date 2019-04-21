@@ -235,7 +235,7 @@ module.exports = (function () {
 	
 	//luam textul de dupa SUCCESSFUL LOGIN 
 	that.verifyLoginSuccessText = function () {
-		return element (by.xpath("//h2[contains(text(),'Alexandra D.')]")).getText();	
+		return element (by.xpath("//*[contains(text(),'Alexandra D.')]")).getText();	
 	};
 
 
@@ -256,23 +256,54 @@ module.exports = (function () {
 			
      
 	
-	//-------------------------------------------------------------
+	//----------------------Update Profile Page---------------------------------------
 	
-	//functie alege departament skiluri
-	that.selectDepartmentSkill = function(){
-		return element (by.xpath("//*[@id='main']/fl-freelancer-onboarding/div/fl-onboarding-skill-select/div/fl-skill-select/div/div/fl-skill-select-panel[1]/div/div[1]/ng-transclude/fl-skill-select-category[1]/span[2]")).click();
+	//Verificam ca apare User settings in meniu
+	that.userSettingsButtonPresent = function (){
+		return element (by.xpath("/html[1]/body[1]/div[1]/fl-callout-content[1]/div[1]/div[2]/app-user-settings[1]/app-account[1]/app-account-list[1]/fl-list[1]/fl-list-item[3]/fl-bit[1]/fl-bit[1]/fl-bit[1]/fl-bit[1]/fl-link[1]/a[1]")).isPresent();
 	};
 	
-	//functie elege skiluri
-	that.selectSkillCategoryHTML= function(){
-		return element (by.xpath("//*[@id='main']/fl-freelancer-onboarding/div/fl-onboarding-skill-select/div/fl-skill-select/div/div/fl-skill-select-results/div/div[1]/ng-transclude/fl-skill-select-skill[2]/label/div")).click();
-		
+	//Dam click pe User settings	
+	that.userSettingsButtonClick = function (){
+		return element (by.xpath("/html[1]/body[1]/div[1]/fl-callout-content[1]/div[1]/div[2]/app-user-settings[1]/app-account[1]/app-account-list[1]/fl-list[1]/fl-list-item[3]/fl-bit[1]/fl-bit[1]/fl-bit[1]/fl-bit[1]/fl-link[1]/a[1]")).click();
+	};	
+	
+	//Fac clear si introduc First Name
+	that.fillInFirstName =function (firstname){
+		element (by.id("firstname")).clear();
+		return element (by.id("firstname")).sendKeys(firstname);
 	};
 	
-	that.selectSkillCategoryJAVA= function(){
-		return element (by.xpath("//*[@id='main']/fl-freelancer-onboarding/div/fl-onboarding-skill-select/div/fl-skill-select/div/div/fl-skill-select-results/div/div[1]/ng-transclude/fl-skill-select-skill[7]/label/div")).click();
-		
+	//Fac clear si introduc Last Name
+	that.fillInLastName =function (lastname){
+		element (by.id("lastname")).clear();
+		return element (by.id("lastname")).sendKeys(lastname);
 	};
+	
+	//Fac clear si introduc Adresa
+	that.fillInAdress =function (adress){
+		element (by.id("address1")).clear();
+		return element (by.id("address1")).sendKeys(adress);
+	};
+	
+	//Fac clear si introduc City
+	that.fillInCity =function (city){
+		element (by.id("city")).clear();
+		return element (by.id("city")).sendKeys(city);
+	};
+	
+	//Fac clear si introduc Zip Code
+	that.fillInZipCode =function (zipCode){
+		element (by.id("zip")).clear();
+		return element (by.id("zip")).sendKeys(zipCode);
+	};
+	
+	//Fac clear si introduc Province
+	that.fillInProvince =function (province){
+		element (by.id("state_code")).clear();
+		return element (by.id("state_code")).sendKeys(province);
+	};
+	
 	
     //functie de scroll   
     that.scrollElemFinderIntoView = function (elemFinder){
@@ -282,76 +313,112 @@ module.exports = (function () {
     	return promise;    	
     };
 	
-    //butonul next step Skills
-    that.nextStepSkillsButton= element (by.xpath("//*[@id='main']/fl-freelancer-onboarding/div/fl-onboarding-skill-select/div/fl-skill-select/div/fl-skill-select-footer/footer/button"));
+	//ia elementul dupa XPATH --> Company Field -- folosit pentru functia de SCROLL
+	that.companyFieldGet = element (by.xpath('//*[@id="changeuserinfoform"]//*[@name="company"]'));
+	
+	
+	//Fac clear si introduc Company
+	that.fillInCompany =function (company){
+		element (by.xpath('//*[@id="changeuserinfoform"]//*[@name="company"]')).clear();
+		return element (by.xpath('//*[@id="changeuserinfoform"]//*[@name="company"]')).sendKeys(company);
+	};
+		
+	//ia elementul dupa XPATH --> Location Field -- folosit pentru functia de SCROLL
+	that.locationFieldGet = element (by.id('location'));
+	
+	
+	//Fac clear si introduc Location
+	that.fillInLocation =function (location){
+		element (by.id('location')).clear();
+		return element (by.id('location')).sendKeys(location);
+	};
+	
+	//Fac click pe Auto Location	
+	that.autoLocationButtonClick =function (){
+		return element (by.id('location-reset')).click();
+	};
+	
+	//ia elementul dupa XPATH --> Time Zone Field -- folosit pentru functia de SCROLL
+	that.timeZoneFieldGet = element (by.id('timezone'));
+	
+	
+	//selectez Time zone
+	that.fillInTimeZone =function (){
+		return element(by.cssContainingText('option', 'Europe/Athens')).click();
+	};
+	
+	//ia elementul dupa XPATH --> Language Field -- folosit pentru functia de SCROLL
+	that.languageFieldGet = element (by.xpath('//*[@id="changeuserinfoform"]//*[@name="userLanguage"]'));
+	
+	
+	//selectez Language
+	that.fillInLanguage =function (){
+		return element(by.cssContainingText('option', 'English')).click();
+	};
+	
+	//ia elementul dupa XPATH --> Project Language Field -- folosit pentru functia de SCROLL
+	that.projectLanguageFieldGet = element (by.xpath('//*[@id="changeuserinfoform"]//*[@name="input-lang"]'));
+	
+	
+	//selectez Language
+	that.fillInProjectLanguage =function (){
+		return element(by.cssContainingText('option', 'English')).click();
+	};
+	
+	//verificam ca apare project language-ul selectat
+	that.addedProjectLanguagePresent = function (){
+	return element (by.id('selected_lang_en')).isPresent();
+			};
+	
+	//ia elementul dupa XPATH --> Save Settings Button -- folosit pentru functia de SCROLL
+	that.saveSettingsButtonGet = element (by.xpath('//*[@id="profileSettingsSubmitBtn"]'));
     
-	//functie buton next
-	that.nextStepSkills= function(){
-		return element (by.xpath("//*[@id='main']/fl-freelancer-onboarding/div/fl-onboarding-skill-select/div/fl-skill-select/div/fl-skill-select-footer/footer/button")).click();
-	};
-	
-	//functie verificare mesaj in pagina skiluri
-	
-	that.verifySkillsTextPresent =function (){
-		return element (by.xpath("//*[contains(text(),'Welcome to Freelancer.com - the world's largest online platform for finding jobs!')]")).isPresent();
-	};
-	
-	//functie introducere first name
+	//dam click pe Save settings	
+	that.saveSettingsButtonClick = function (){
+		return element (by.id('profileSettingsSubmitBtn')).click();
+				};
 
-	that.fillInFirstName =function (firstname){
-		element (by.xpath("//*[@id='main']/fl-freelancer-onboarding/div/fl-complete-profile/div/div[2]/div[1]/span[2]/input[1]")).clear();
-		return element (by.xpath("//*[@id='main']/fl-freelancer-onboarding/div/fl-complete-profile/div/div[2]/div[1]/span[2]/input[1]")).sendKeys(firstname);
+	//verificam ca apare textul la salvare
+	that.profileSettingsSaveTextPresent= function (){
+		return element (by.xpath("//aside[@id='profileSettingsSuccess']//strong[contains(text(),'Your account details have been successfully saved!')]")).getText();
+		
 	};
 	
+	//-----------------Dashboard page--------------------------------------------------------
 
-	that.fillInLastName =function (lastname){
-		element (by.xpath("//*[@id='main']/fl-freelancer-onboarding/div/fl-complete-profile/div/div[2]/div[1]/span[2]/input[1]")).clear();
-		return element (by.xpath("//*[@id='main']/fl-freelancer-onboarding/div/fl-complete-profile/div/div[2]/div[1]/span[2]/input[1]")).sendKeys(lastname);
+	//verificam ca exista butonul Browse
+	that.browseButtonPresent = function (){
+		return element (by.xpath("//fl-bit/fl-container/fl-callout[1]/fl-callout-trigger/fl-button/button")).isPresent();
 	};
 	
-	that.selectLanguages= function(language){
-		element (by.xpath("//*[@id='main']/fl-freelancer-onboarding/div/fl-complete-profile/div/div[2]/div[2]/span[3]/span/span[1]/span/ul")).clear();
-		return element(by.xpath("//*[@id='main']/fl-freelancer-onboarding/div/fl-complete-profile/div/div[2]/div[2]/span[3]/span/span[1]/span/ul")).sendKeys(language);
+	//dam click pe butonul Browse
+	that.browseButtonClick = function (){
+		return element (by.xpath("//fl-bit/fl-container/fl-callout[1]/fl-callout-trigger/fl-button/button")).click();
 	};
 	
-	that.selectAdvancedLevel = function(){
-		return element (by.xpath("//*[@id='main']/fl-freelancer-onboarding/div/fl-complete-profile/div/div[2]/div[3]/span[3]/fl-experience-level[3]/div/span[3]")).click();
+	//verificam ca apare fieldul de search
+	that.searchFieldPresent = function (){
+		return element (by.xpath("//fl-bit/fl-bit/fl-search/fl-input/fl-bit/fl-bit/input")).isPresent();
 	};
 	
-    //butonul next step Skills
-    that.nextStepLanguagesButton= element (by.xpath("//*[@id='main']/fl-freelancer-onboarding/div/fl-complete-profile/div/div[2]/div[4]/button"));
-
-	that.nextStepLanguages =function(){
-		return element (by.xpath("//*[@id='main']/fl-freelancer-onboarding/div/fl-complete-profile/div/div[2]/div[4]/button")).click();
+	//dam clik pe Projects
+	that.searchProjectsButton = function (){
+		return element (by.xpath("//fl-grid/fl-col[2]/app-browse-links-item/fl-link/a")).click();
 	};
 	
-   //functie verificare mesaj in pagina payment
-	
-	that.verifyPaymentTextPresent =function (){
-		return element (by.xpath("//*[contains(text(),'Select a Payment Method to verify:')]")).isPresent();
+	//verificam ca apare textul Projects
+	that.projectTextVerify = function (){
+		return element (by.xpath('//*[@id="filterHeader"]/li[1]/header/span[2]')).getText();
 	};
 	
-    //butonul skip for new
-    that.skipForNewButtonPaymentButton= element (by.id("skip-button-pv"));
-
-	that.skipForNewButtonPayment = function(){
-		return element (by.id("skip-button-pv")).click();
+	//cautam un proiect in search
+	that.projectSearchField = function(searchProject){
+		element (by.xpath('//*[@id="search-results"]/fl-header-filter/div/div[1]/input')).clear();
+		return element (by.xpath('//*[@id="search-results"]/fl-header-filter/div/div[1]/input')).sendKeys(searchProject);
+		
 	};
 	
-	that.verifyMembershipTextPresent =function (){
-		return element (by.xpath("//*[contains(text(),'Freelancers with Plus Membership are 427% more likely to be awarded a project.')]")).isPresent();
-	};
-	
-    //butonul skip for new
-    that.skipForNewButtonMembershipButton= element (by.id("skip-button-upsell"));
-    
-	that.skipForNewButtonMembership = function(){
-		return element (by.id("skip-button-upsell")).click();
-	};
-	
-	that.verifyHomeScreenTextPresent =function (){
-		return element (by.xpath("//*[contains(text(),'Get started on Freelancer with these tips')]")).isPresent();
-	};
+			
 	
 	
 return that;

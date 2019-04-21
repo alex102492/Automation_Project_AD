@@ -19,7 +19,13 @@
 	"postLogoutText":"Hire expert freelancers for any job, online",
 	"firstname":"Alexandra",
 	"lastname":"Dumitrescu",
-	"language":"english"
+	"adress":"Bulevardul Dacia, numarul 4, bl.E6, scara B",
+	"city":"Mioveni",
+	"zipCode":"115400",
+	"province":"Arges",
+	"company":"Alpha SRL",
+	"location":"Bulevardul Dacia, Mioveni, Romania",
+	"profileSaveSuccessMessage":"Your account details have been successfully saved!"
 	
 }
 ]
